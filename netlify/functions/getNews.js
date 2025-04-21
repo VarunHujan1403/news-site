@@ -1,10 +1,9 @@
-import fetch from 'node-fetch';
+const fetch = require("node-fetch");
 
-const API_KEY = "b14a159be0224be58d65324fe1e2a32c";
-
-export async function handler(event) {
+exports.handler = async function(event, context) {
   const query = event.queryStringParameters.query || "India";
-  const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&apiKey=${API_KEY}`;
+  const apiKey = process.env.NEWS_API_KEY;
+  const url = `https://newsapi.org/v2/everything?q=${query}&sortBy=publishedAt&language=en&apiKey=${apiKey}`;
 
   try {
     const response = await fetch(url);
@@ -12,16 +11,12 @@ export async function handler(event) {
 
     return {
       statusCode: 200,
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-      },
       body: JSON.stringify(data),
     };
   } catch (error) {
     return {
       statusCode: 500,
-      body: `Error: ${error.message}`,
+      body: JSON.stringify({ message: "Failed to fetch news", error: error.message }),
     };
   }
-}
+};
