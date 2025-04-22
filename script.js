@@ -67,10 +67,17 @@ let curSelectedNav = null;
 
 function onNavItemClick(id) {
   fetchNews(id);
-  const navItem = document.getElementById(id);
-  curSelectedNav?.classList.remove("active");
-  curSelectedNav = navItem;
-  curSelectedNav.classList.add("active");
+const navItem = document.getElementById(id);
+
+if (!navItem) {
+    console.warn(`No nav item found for ID: ${id}`);
+    return;
+}
+
+curSelectedNav?.classList.remove("active");
+curSelectedNav = navItem;
+curSelectedNav.classList.add("active");
+
 
   const resultsMessage = document.getElementById("results-message");
   resultsMessage.innerHTML = `<h2>Showing results for the topic: <strong>${id}</strong></h2>`;
