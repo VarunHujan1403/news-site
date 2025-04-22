@@ -1,17 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&display=swap");
 
-/* Base styles for desktop */
-.container {
-    display: flex;
-    flex-direction: row;
-}
-
-/* Styles for screens 768px and below */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-}
 * {
     padding: 0;
     margin: 0;
@@ -50,9 +38,13 @@ ul {
 }
 
 .container {
+    display: flex;
+    flex-direction: row;
     max-width: 1180px;
     margin-inline: auto;
     overflow: hidden;
+    flex-wrap: wrap;
+    padding: 0 16px;
 }
 
 nav {
@@ -63,11 +55,13 @@ nav {
     z-index: 99;
     left: 0;
     right: 0;
+    width: 100%;
 }
 
 .main-nav {
     justify-content: space-between;
     padding-block: 8px;
+    flex-wrap: wrap;
 }
 
 .company-logo img {
@@ -77,6 +71,7 @@ nav {
 
 .nav-links ul {
     gap: 16px;
+    flex-wrap: wrap;
 }
 
 .hover-link {
@@ -98,6 +93,8 @@ nav {
 .search-bar {
     height: 32px;
     gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
 }
 
 .news-input {
@@ -131,8 +128,7 @@ main {
 .results-message {
     font-size: 24px;
     font-weight: 500;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0;
     text-align: center;
     color: var(--primary-text-color);
     padding: 16px;
@@ -140,19 +136,20 @@ main {
 
 .results-message h2 {
     font-size: 1.8rem;
-    color: var(--primary-text-color);
     margin-top: 0;
+    color: var(--primary-text-color);
 }
 
 .cards-container {
-    justify-content: space-between;
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    row-gap: 20px;
-    align-items: start;
+    gap: 20px;
 }
 
 .card {
-    width: 360px;
+    width: 100%;
+    max-width: 360px;
     min-height: 400px;
     box-shadow: 0 0 4px #d4ecff;
     border-radius: 4px;
@@ -180,4 +177,34 @@ main {
 
 .news-source {
     margin-block: 12px;
+}
+
+/* Responsive styles for screens 768px and below */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 0 12px;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links ul {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .search-bar {
+        justify-content: center;
+    }
+
+    .results-message h2 {
+        font-size: 1.4rem;
+    }
+
+    .card {
+        max-width: 100%;
+    }
 }
