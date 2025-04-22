@@ -179,17 +179,19 @@ main {
     margin-block: 12px;
 }
 
-/* Responsive styles for screens 768px and below */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
         padding: 0 12px;
     }
-        .search-bar {
-            margin-bottom: 16px;
-            flex-direction: column;
-            align-items: stretch;
-        }
+
+    .search-bar {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        margin-bottom: 24px;
+        /* 👈 This creates space below the search bar */
+    }
 
     .main-nav {
         flex-direction: column;
@@ -200,11 +202,14 @@ main {
         justify-content: center;
         flex-wrap: wrap;
     }
-
-    .search-bar {
-        justify-content: center;
-    }
-
+        .results-message {
+            margin-top: 8px;
+            margin-bottom: 16px;
+            padding: 8px;
+            font-size: 1.2rem;
+            text-align: center;
+            display: block;
+        }
     .results-message h2 {
         font-size: 1.4rem;
     }
